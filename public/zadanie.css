@@ -1,0 +1,308 @@
+    :root{
+        --main-color:#ffe08a;
+        --outline-color: rgba(245, 245, 245, 0.5);
+        --text-color:black;
+    }
+    
+
+
+
+    /*navbar*/
+    .navbar{
+        background-color:var(--main-color);
+        color:var(--text-color);
+        border-color:var(--outline-color);
+        padding: 0.25rem 0.25rem 0.25rem 0.25rem;
+        box-shadow: none;
+    }
+    .navbar-burger{
+        border: 1px solid var(--outline-color);
+        border-radius: 1rem;
+    }
+    #my-navbar-menu{
+        background-color: inherit;
+        color:inherit;
+        border-color: var(--outline-color);
+        box-shadow: none;
+
+        margin-left:1rem;
+        margin-right:1rem;
+    }
+    #my-navbar-start{
+        width:100%;
+    }
+    /* navbar dropdown */
+    .navbar-dropdown {
+        display: none;
+    }
+    .navbar-item:hover .navbar-dropdown{
+        display: block;
+    }
+    #navbar-dropdown-representation{
+        width:6rem;
+    }
+    #my-navbar-dropdown{
+        background-color: #ffffff;
+        border: 2px solid var(--outline-color);
+        border-radius: 1rem;
+    }
+    /* navbar searchbar */
+    #navbar-searchbar{
+        margin:auto;
+        display: flex;
+    }
+    #navbar-search-button{
+        margin-left:1rem;
+        background-color: inherit;
+        color:var(--outline-color);
+        border-color: var(--outline-color);
+    }
+
+
+
+    /*main part */
+    .container{
+        padding-left: 1rem;
+        padding-right: 1rem;
+        padding-bottom: 20vh;
+    }
+
+
+
+    /* slideshow */
+    .slideshow-container{
+        background-color: lightgray;
+        margin: 0.5rem 1rem;
+        display:flex;
+        justify-content: center;
+        position:relative;
+        
+        overflow:hidden;
+
+        min-height: 470px;
+        height: 25rem;
+    }
+    p.slide-header{
+        font-size: 1.8rem;
+        text-align: center;
+        width:100%;
+        color:rgba(255, 255, 255, 0.779);
+        margin-bottom: 0.5rem;
+    }
+    p.slide-text{
+        font-size: 1.2rem;
+        color:rgba(255, 255, 255, 0.779);
+    }
+    .my-slide{
+        position:relative;
+        width:fit-content;
+        display: none;
+    }
+    .my-image-16b9{ 
+        width: 640px;
+        height: 360px;
+        border-radius: 1rem;
+        object-fit: cover;
+        object-position: 50% 50%; /*ucina obrazek od lewego dolnego punktu*/
+
+    }
+    .my-frame{
+        max-width: 640px;
+        display:flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .my-slide.slide-in-from-right {
+        animation-name: slide-in-from-right;
+        animation-duration: 3s;
+    }
+    @keyframes slide-in-from-right {
+        from {
+            margin-right: -2000px;
+          }
+          to {
+            margin-right: 0;
+          }
+    }
+    /* .my-slide.slide-in-to-left {
+        animation-name: slide-in-to-left;
+        animation-duration: 3s;
+    }
+    @keyframes slide-in-to-left {
+        from {
+            margin-left: 0px;
+          }
+          to {
+            margin-left: -2000px;
+          }
+    } */
+
+    .prev, .next {
+        cursor: pointer;
+        position: absolute;
+        width: auto;
+        bottom:50%;
+
+        color: #bbb;
+        font-weight: bold;
+        font-size: 3rem;
+        transition: 0.6s ease;
+        user-select: none;
+      }
+    .prev {
+        left:10%;
+    }
+    .next {
+        right: 10%;
+    }
+    .bar-container{
+        position:absolute;
+        bottom: 1%;
+    }
+    .bar {
+        height: 0.4rem;
+        width: 2rem;
+        background-color: #bbb;
+
+        display: inline-block;
+
+        transition: background-color 0.6s ease;
+        cursor: pointer;
+        user-select: none;
+    }
+    .active{
+        background-color: rgba(255, 255, 255, 0.726);
+    }
+
+
+    /*tiles*/
+    .tile-gallery{
+        display:flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    .my-tile{
+        color:var(--text-color);
+        border:2px solid var(--outline-color);
+        border-radius: 1rem;
+        padding-top:1rem;
+        padding-bottom:1rem;
+        min-height: min-content;
+
+        align-items: stretch;
+        display:block;
+        justify-content: center;
+        flex:1;
+    }
+    .line{
+        color:var(--outline-color);
+        background-color: var(--outline-color);
+        border-color: var(--outline-color);
+        height:2px;
+        margin-top:0.75rem;
+        margin-bottom:0.75rem;
+    }
+    .my-tile-header{
+        justify-self: center;
+        margin-left:1rem;
+    }
+    .tile-child{
+        display: flex;
+        flex-wrap:wrap;
+        justify-content: center;
+    }
+    .tile-content{
+        width:300px;
+    }
+    .my-image-4b3{ 
+        width: 300px;
+        height: 337px;
+        border-radius: 1rem;
+        object-fit: cover;
+        object-position: 0% 100%; /*ucina obrazek od lewego dolnego punktu*/
+    }
+    /* table tr:nth-of-type(i){
+        background-color: rgb(0, calc(139+i*10), 139);
+    } */
+    .my-table{
+        border-collapse:collapse;
+    }
+    table tr:nth-of-type(0) {
+        background-color: rgb(0, calc(139 + 0 * 20), 139);
+    }
+    
+    table tr:nth-of-type(1) {
+        background-color: rgb(0, calc(139 + 1 * 20), 139);
+    }
+    
+    table tr:nth-of-type(2) {
+        background-color: rgb(0, calc(139 + 2 * 20), 139);
+    }
+
+    .paragraph{
+        font-size: 0.8rem;
+    }
+
+
+    #prospects{
+        background-color: rosybrown;
+    }
+    #courses{
+        background-color:darkcyan;
+    }
+    #equipment{
+        background-color: lightblue;
+    }
+
+    .link a{
+        text-decoration: underline;
+    }
+
+
+
+
+    .command-area{
+        display:block;
+        width:80%;
+        height:10rem;
+        overflow-y:scroll;
+        margin:0 auto;
+        border: 2px solid var(--outline-color);
+    }
+
+
+
+    /* footer */
+    #my-footer{
+        background-color:var(--main-color);
+        color:var(--text-color);
+        border-color:var(--outline-color);
+        left:1rem;
+        right: 1rem;
+        padding: 1rem;
+
+
+        position: fixed;
+        bottom: 0;
+
+
+        display: grid;
+        grid-template-columns: 3fr 3fr 1fr;
+    }
+    .footer-header{
+        font-size:1.1rem;
+        font-weight: bold;
+    }
+    #address{
+        grid-column-start: 1;
+    }
+    #contact{
+        grid-column-start: 2;
+    }
+    #social-media{
+        grid-column-start: 3;
+    }
+    #social-media i{
+        color: var(--text-color); 
+    }
+

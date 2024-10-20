@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="eng">
+<head>
+    <title>
+        <%= post.title %> - My Server Attempt
+    </title>
+
+    <style>
+        .entry {
+            background: #0000cc;
+            padding: 20px;
+            border-radius: 5px;
+            color: white;
+            text-align: center;
+            margin: 20px;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+            background-color: transparent;
+            border: none;
+        }
+        .my-button {
+            display: inline-block;
+            cursor: pointer;
+            margin: 20px;
+            padding: 10px 15px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .back-button {
+            background-color: #0000cc;
+            color: white;
+        }
+        .delete-button {
+            background-color: crimson;
+            color: white;
+        }
+    </style>
+    <script>
+        function deletePost(id){
+            if(confirm('Are you sure you want to delete this post?')) {
+                fetch(`/posts/${id}`, {
+                    method: 'delete'
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            window.location.href = '/';
+                        } else {
+                        alert('Failed to delete the post.');
+                        }
+                    })
+                    .catch(error => {console.log(error);});
+            }
+        }
+
+    </script>
+</head>
+<body>
+<h1 style="text-align:center">Post Details</h1>
+<div class="entry">
+    <h2><%= post.title %></h2>
+    <p><%= post.content %></p>
+</div>
+<a href="/" class="my-button back-button">Back to Posts</a>
+<button class="my-button delete-button" onclick="deletePost('<%= post._id %>')">Delete this post</button>
+</body>
+
+</html>

@@ -1,0 +1,88 @@
+<style>
+    .hidden{
+        display: none;
+    }
+    #pop-up-form{
+        margin-left:auto;
+        margin-right:auto;
+    }
+    .post-form{
+        justify-self: center;
+        border: solid #0f0f0f 3px;
+        width:fit-content;
+        padding: 2em;
+        margin:auto;
+    }
+    label{
+        display:block;
+    }
+    .form-textarea{
+        width:auto;
+        margin-bottom: 1em;
+    }
+    .form-textarea-title{
+        height: 1.5em;
+    }
+    .form-textarea-content{
+        height: 10em;
+    }
+    .buttons{
+        display: block;
+        margin-left:auto;
+        margin-top: 1em;
+    }
+</style>
+<script>
+    function showForm(){
+        const popup = document.getElementById('pop-up-form');
+        popup.classList.remove('hidden');
+    }
+
+    function hideForm(){
+        const popup = document.getElementById("pop-up-form");
+        popup.classList.add("hidden");
+        clearForm();
+    }
+
+    function clearForm(){
+        document.getElementById("post-title").value ="";
+        document.getElementById("post-content").value ="";
+    }
+
+    function sendPost(data){
+        const urlEncodedData = new URLSearchParams(data).toString();
+        fetch("/posts/", {
+            method: "POST",
+            headers: {
+                "Content-Type": 'application/x-www-form-urlencoded',
+            },
+            body: urlEncodedData
+        })
+            .catch(()=>{console.log("Error sending data.");});
+    }
+    document.addEventListener("DOMContentLoaded", () => {
+        const form = document.getElementById("form");
+        form.addEventListener("submit", (event) => {
+            event.preventDefault();
+            const formData = new FormData(form);
+
+            sendPost(formData);
+            window.location.href ="/"
+        });
+    });
+</script>
+
+
+<div id="pop-up-form" class="hidden">
+    <form id="form" class="post-form">
+        <label for="post-title" id="form-text-title"> Title: </label>
+        <textarea id="post-title" name="title" class="form-textarea form-textarea-title"> </textarea>
+        <label for="post-content" id="form-text-post"> Post: </label>
+        <textarea id="post-content" name="content" class="form-textarea form-textarea-content"> </textarea>
+        <div class="buttons">
+            <input type="submit" value="Post" />
+            <button type="button" onclick=clearForm()> Clear </button>
+        </div>
+    </form>
+</div>
+

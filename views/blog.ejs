@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="eng">
+    <head>
+        <title>
+            My server attempt
+        </title>
+
+        <style>
+            .gallery{
+                display: flex;
+                justify-content: center;
+                flex-flow: wrap;
+                margin-bottom: 2em;
+            }
+            .entry{
+                background: #0000cc;
+                display: inline;
+                margin-left: 2px;
+                margin-right: 2px;
+            }
+            a {
+                text-decoration: none;
+                color: inherit;
+                background-color: transparent;
+                border: none;
+            }
+        </style>
+
+    </head>
+    <body>
+        <h1> A working site </h1>
+        <button style="justify-self: center" onclick="showForm()"> Write a post! </button>
+        <p style="text-align:center"> Posts: </p>
+        <div class='gallery'>
+        <%
+        if(posts.length > 0){
+            posts.forEach((post) => { %>
+                <div class="entry">
+                    <a href="/posts/<%= post._id %>">
+                        <h3 style="color:white"> <%=post.title%> </h3>
+                        <p style="color:white"> <%= post.content %></p>
+                    </a>
+                </div>
+
+            <% })
+            }
+        else{ %>
+            <p style="text-align:center"> Sorry, no posts as of now  </p>
+        <%
+        }
+        %>
+        </div>
+
+        <%- include('./partials/form.html')%>
+
+    </body>
+
+</html>
